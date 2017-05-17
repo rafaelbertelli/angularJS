@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="app">
+    <head>
+        <meta charset="UTF-8">
+        <title>Fundamentos de AngularJS</title>
+        <script src="node_modules/angular/angular.js"></script>
+        <script>
+            angular.module("app", []); 
+            angular.module("app").service('utils', function() {
+                this.upper = function(input) {
+                    return input.toUpperCase()
+                }
+            })
+            angular.module('app').controller('MeuController', [
+                'utils',
+                function(utils) {
+                    const self = this
+                    this.conteudo = utils.upper('cremosa')
+                }
+            ])
+        </script>
+    </head>
+    <body>
+        <div ng-controller="MeuController as ctrl">
+            <h1>{{ctrl.conteudo}}</h1>
+        </div>
+    </body>
+</html>
